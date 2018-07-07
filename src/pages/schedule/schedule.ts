@@ -1,6 +1,6 @@
 import { Component, ViewChild } from '@angular/core';
 
-import { AlertController, App, FabContainer, ItemSliding, List, ModalController, NavController, ToastController, LoadingController, Refresher } from 'ionic-angular';
+import { AlertController, App, FabContainer, ItemSliding, List, ModalController, NavController, ToastController, LoadingController, Refresher, Platform } from 'ionic-angular';
 
 /*
   To learn how to use third party libs in an
@@ -44,7 +44,8 @@ export class SchedulePage {
     public toastCtrl: ToastController,
     public confData: ConferenceData,
     public user: UserData,
-    private vibration: Vibration
+    private vibration: Vibration,
+    private platform: Platform,
   ) {}
 
   ionViewDidLoad() {
@@ -52,7 +53,9 @@ export class SchedulePage {
     this.updateSchedule();
   }
   ionViewDidEnter(){
-    this.vibration.vibrate([2000,1000,2000]);
+    this.platform.ready().then(() => {
+      this.vibration.vibrate(1000)
+    })
   }
 
   updateSchedule() {
