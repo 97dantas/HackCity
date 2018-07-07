@@ -14,6 +14,7 @@ import { UserData } from '../../providers/user-data';
 import { SessionDetailPage } from '../session-detail/session-detail';
 import { ScheduleFilterPage } from '../schedule-filter/schedule-filter';
 
+import { Vibration } from '@ionic-native/vibration';
 
 @Component({
   selector: 'page-schedule',
@@ -43,11 +44,15 @@ export class SchedulePage {
     public toastCtrl: ToastController,
     public confData: ConferenceData,
     public user: UserData,
+    private vibration: Vibration
   ) {}
 
   ionViewDidLoad() {
     this.app.setTitle('Schedule');
     this.updateSchedule();
+  }
+  ionViewDidEnter(){
+    this.vibration.vibrate([2000,1000,2000]);
   }
 
   updateSchedule() {

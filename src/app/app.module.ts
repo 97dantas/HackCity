@@ -29,6 +29,8 @@ import { SupportPage } from '../pages/support/support';
 import { ConferenceData } from '../providers/conference-data';
 import { UserData } from '../providers/user-data';
 
+import { Vibration } from '@ionic-native/vibration';
+
 
 @NgModule({
   declarations: [
@@ -93,7 +95,8 @@ import { UserData } from '../providers/user-data';
     ConferenceData,
     UserData,
     InAppBrowser,
-    SplashScreen
+    SplashScreen,
+    Vibration
   ]
 })
 export class AppModule { }
